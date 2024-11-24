@@ -1,2 +1,2 @@
-# WomenDay
-Link web demo: https://caubesin.github.io/WomenDay/
+# Sweet
+Link web demo: https://caubesin.github.io/Sweet/
