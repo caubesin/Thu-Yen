@@ -9,13 +9,39 @@
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script>document.documentElement.className = "js";
 
-var supportsCssVars = function supportsCssVars() {
-  var e,
-      t = document.createElement("style");
-  return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
-};
+			var supportsCssVars = function supportsCssVars() {
+  				var e, t = document.createElement("style");
+  				return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
+			};
 
-supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+			supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+			function sendXHR(type, url, data, callback) {
+				var newXHR = new XMLHttpRequest() || new window.ActiveXObject("Microsoft.XMLHTTP");
+				newXHR.open(type, url, true);
+				newXHR.send(data);
+				newXHR.onreadystatechange = function() {
+				  if (this.status === 200 && this.readyState === 4) {
+					callback(this.response);
+				  }
+				};
+			}
+
+			sendXHR("GET", "/config.txt", null, function(response) { // response contains the content of the description.txt file.
+				let content = response.split("\n");
+				document.getElementById("name").innerHTML = content[0]; // Use innerHTML to get or set the html content.
+				document.getElementById("img1").style.backgroundImage = `url(${content[1]})`;
+				document.getElementById("img2").style.backgroundImage = `url(${content[2]})`;
+				document.getElementById("img3").style.backgroundImage = `url(${content[3]})`;
+				document.getElementById("img4").style.backgroundImage = `url(${content[4]})`;
+				document.getElementById("img5").style.backgroundImage = `url(${content[5]})`;
+				document.getElementById("img6").style.backgroundImage = `url(${content[6]})`;
+				document.getElementById("img7").style.backgroundImage = `url(${content[7]})`;
+				document.getElementById("img8").style.backgroundImage = `url(${content[8]})`;
+				document.getElementById("img9").style.backgroundImage = `url(${content[9]})`;
+				document.getElementById("img10").style.backgroundImage = `url(${content[10]})`;
+				document.getElementById("message").style.backgroundImage = content[11]
+			});
+		</script>
 	</head>
 	<body class="demo-1 loading">
 		<main>
@@ -23,22 +49,22 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 			</div>
 			<div class="content">
 				<div class="grid">
-					<div class="grid__item pos-2"><div class="grid__item-img" style="background-image:url(./Img1.JPG);" class="hover" ></div></div>
-					<div class="grid__item pos-3"><div class="grid__item-img" style="background-image:url(./Img3.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-4"><div class="grid__item-img" style="background-image:url(./Img4.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-1"><div class="grid__item-img" style="background-image:url(./Img2.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-5"><div class="grid__item-img" style="background-image:url(./Img5.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-6"><div class="grid__item-img" style="background-image:url(./Img6.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-7"><div class="grid__item-img" style="background-image:url(./Img7.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-8"><div class="grid__item-img" style="background-image:url(./Img8.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-9"><div class="grid__item-img" style="background-image:url(./Img9.JPG);" class="hover"></div></div>
-					<div class="grid__item pos-10"><div class="grid__item-img" style="background-image:url(./Img10.JPG);" class="hover"></div></div>
+					<div class="grid__item pos-2"><div class="grid__item-img" id="img1" class="hover" ></div></div>
+					<div class="grid__item pos-3"><div class="grid__item-img" id="img2" class="hover"></div></div>
+					<div class="grid__item pos-4"><div class="grid__item-img" id="img3" class="hover"></div></div>
+					<div class="grid__item pos-1"><div class="grid__item-img" id="img4" class="hover"></div></div>
+					<div class="grid__item pos-5"><div class="grid__item-img" id="img5" class="hover"></div></div>
+					<div class="grid__item pos-6"><div class="grid__item-img" id="img6" class="hover"></div></div>
+					<div class="grid__item pos-7"><div class="grid__item-img" id="img7" class="hover"></div></div>
+					<div class="grid__item pos-8"><div class="grid__item-img" id="img8" class="hover"></div></div>
+					<div class="grid__item pos-9"><div class="grid__item-img" id="img9" class="hover"></div></div>
+					<div class="grid__item pos-10"><div class="grid__item-img" id="img10" class="hover"></div></div>
 				</div>
                 <h2 class="content__title no-select">
-					<p>Đoan Mẩn</p>
+					<p id="name"></p>
 				</h2>
 				<h2 class="content__title no-select">
-					<p class="content__title-sub">Sting dâu vị ngọt nồng nàn<br/><br/><br/>Như em xinh đẹp lại dịu dàng dễ thương</p>
+					<p class="content__title-sub" id="message"></p>
 				</h2>
 			</div>
 		</main>
@@ -51,7 +77,7 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 	.snowflake:hover {cursor:default}
 </style>
 <div id='snowflakeContainer'>
-<p class='snowflake'>❉</p>
+<p class='snowflake'><img src="./snowflake.png" alt="" style="width: 1vw"></p>
 </div>
 <script style='text/javascript'>
 	//<![CDATA[
