@@ -26,7 +26,7 @@
 				};
 			}
 
-			sendXHR("GET", "/config.txt", null, function(response) { // response contains the content of the description.txt file.
+			sendXHR("GET", "./config.txt", null, function(response) { // response contains the content of the description.txt file.
 				let content = response.split("\n");
 				document.getElementById("name").innerHTML = content[0]; // Use innerHTML to get or set the html content.
 				document.getElementById("img1").style.backgroundImage = `url(${content[1]})`;
